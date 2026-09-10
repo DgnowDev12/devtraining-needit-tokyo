@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="DELETE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Use to populate the Email field on a New Record.</description>
+        <field/>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Needit Populate New Record Email Field</name>
+        <order/>
+        <script><![CDATA[function onLoad(isloading, newValue) {
+	
+  if(isloading || newValue === ''){
+	return;
+  }
+  
+  if(g_form.isNewRecord()){
+         
+   //Instantiate the GetEmailAddress script Include
+	var getEmailAddr = new GlideAjax('GetEmailAddress');
+	// Specify the getEmail method
+	getEmailAddr.addParam('sysparm_name', 'getEmail');
+	// Pass the requested for sys_id
+	getEmailAddr.addParam('sysparm_userID', g_form.getValue('u_requested_for'));
+	// Send the request to the server
+	getEmailAddr.getXML(populateEmailField);
+  }
+
+	//when the response is back from the server
+	function populateEmailField(response){
+		// Extract the email address from the response, clear any value from the email field,
+		// set new value in the email field
+		var emailFromScriptInclude = response.responseXML.documentElement.getAttribute("answer");
+		g_form.clearValue('u_requested_for_email');
+		g_form.setValue('u_requested_for_email',emailFromScriptInclude);
+	}
+
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-09 06:29:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5f5df510475b4b10ec18b4b4116d4368</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Needit Populate New Record Email Field</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_client_5f5df510475b4b10ec18b4b4116d4368</sys_update_name>
+        <sys_updated_by>david.loo</sys_updated_by>
+        <sys_updated_on>2026-09-10 06:24:39</sys_updated_on>
+        <table>x_58872_needit_needit</table>
+        <type>onLoad</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>9050519593d1261cc4e8ddd548373cbd</instance_id>
+        <instance_name>dev340973</instance_name>
+        <name>sys_script_client_5f5df510475b4b10ec18b4b4116d4368</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description&gt;Use to populate the Email field on a New Record.&lt;/description&gt;&lt;field/&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;Needit Populate New Record Email Field&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onLoad(isloading, newValue) {
+	
+  if(isloading || newValue === ''){
+	return;
+  }
+  
+  if(g_form.isNewRecord()){
+         
+   //Instantiate the GetEmailAddress script Include
+	var getEmailAddr = new GlideAjax('GetEmailAddress');
+	// Specify the getEmail method
+	getEmailAddr.addParam('sysparm_name', 'getEmail');
+	// Pass the requested for sys_id
+	getEmailAddr.addParam('sysparm_userID', g_form.getValue('u_requested_for'));
+	// Send the request to the server
+	getEmailAddr.getXML(populateEmailField);
+  }
+
+	//when the response is back from the server
+	function populateEmailField(response){
+		// Extract the email address from the response, clear any value from the email field,
+		// set new value in the email field
+		var emailFromScriptInclude = response.responseXML.documentElement.getAttribute("answer");
+		g_form.clearValue('u_requested_for_email');
+		g_form.setValue('u_requested_for_email',emailFromScriptInclude);
+	}
+
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-09 06:29:38&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;5f5df510475b4b10ec18b4b4116d4368&lt;/sys_id&gt;&lt;sys_mod_count&gt;13&lt;/sys_mod_count&gt;&lt;sys_name&gt;Needit Populate New Record Email Field&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="NeedIt" source="x_58872_needit"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="NeedIt"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_5f5df510475b4b10ec18b4b4116d4368&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;david.loo&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-10 06:24:39&lt;/sys_updated_on&gt;&lt;table&gt;x_58872_needit_needit&lt;/table&gt;&lt;type&gt;onLoad&lt;/type&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-198843914</payload_hash>
+        <record_name>Needit Populate New Record Email Field</record_name>
+        <reverted_from/>
+        <source>df92cb6047d3cf10ec18b4b4116d4322</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>david.loo</sys_created_by>
+        <sys_created_on>2026-09-10 06:24:39</sys_created_on>
+        <sys_id>f7674ba44757cf10ec18b4b4116d4359</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a089fd637f0000001</sys_recorded_at>
+        <sys_updated_by>david.loo</sys_updated_by>
+        <sys_updated_on>2026-09-10 06:24:39</sys_updated_on>
+        <type>Client Script</type>
+        <update_guid>37674ba46657cf105b012311370b4a58</update_guid>
+        <update_guid_history>37674ba46657cf105b012311370b4a58:-198843914,8bf64f643557cf1007a33913ddfed07a:-540111498,4e468b6c7817cf10aeff09e569a498f3:-385129152,f9b5c7ac4b17cf10d6610a4da502a760:725195650,609583e4e393cf104ff91a1a7868650a:-831725279,70b447642517cf10658a2d9bb7e5bca8:725195650,8d9fb624c893cf10678c9b95e57d4091:-311510263,a90fb2e08193cf1048c567d81d23aea6:1880624372,3ebdb2208093cf100e1b7e765f35f047:462429311,c1d08ed4065b4b10ae34c31fed7d90db:-944538298,2fefb954f95b4b106ed29f56df728aaa:1033239295,0dcf7954e05b4b10e1b3203e54260cdb:-137684450,4c8f3d147b5b4b10ad4fd42015224230:924068918,c3febdd0305b4b108fabbf33f620e91c:2062936886</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>david.loo</sys_created_by>
+        <sys_created_on>2026-09-10 06:43:59</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_client">sys_script_client</sys_db_object>
+        <sys_id>199361c10a5d43d893a4d2253252fa44</sys_id>
+        <sys_metadata>5f5df510475b4b10ec18b4b4116d4368</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Needit Populate New Record Email Field</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent display_value="Needit">01219a1747c50310ec18b4b4116d4301</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_script_client_5f5df510475b4b10ec18b4b4116d4368</sys_update_name>
+        <sys_update_version display_value="sys_script_client_5f5df510475b4b10ec18b4b4116d4368">f7674ba44757cf10ec18b4b4116d4359</sys_update_version>
+        <sys_updated_by>david.loo</sys_updated_by>
+        <sys_updated_on>2026-09-10 06:43:59</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
